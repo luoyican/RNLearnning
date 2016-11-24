@@ -88,4 +88,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('RN30Days', ()=>Day1);
+AppRegistry.registerComponent('RN30Days', ()=>Day2);
