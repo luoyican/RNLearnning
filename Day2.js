@@ -112,7 +112,7 @@ class Day2 extends React.Component {
         } else {
             console.log('this.state.timeLeft <= 10');
             this.setState({
-                timeLeft: this.state.timeLeft * 2 + 11,
+                timeLeft: this.state.timeLeft * 2 + 10,
             });
         }
     }
