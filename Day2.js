@@ -98,7 +98,7 @@ class Day2 extends React.Component {
             } else {
                 this.timer && clearInterval(this.timer);
                 this.setState({
-                    value: "倒计时完成lo，精彩继续",
+                    value: "倒计时完成，精彩继续",
                 });
             }
         }, 500);
