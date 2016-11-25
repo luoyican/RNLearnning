@@ -77,7 +77,7 @@ class Day2 extends React.Component {
                 this.setState({
                     iconBG: require('./img/Tulips.jpg'),
                 });
-
+                break;
         }
     }
 
@@ -96,8 +96,9 @@ class Day2 extends React.Component {
                     value: "倒计时" + this.state.timeLeft + "秒",
                 })
             } else {
-                this.timer && clearInterval(this.timer);
+                //this.timer && clearInterval(this.timer);
                 this.setState({
+                    timeLeft:15,
                     value: "倒计时完成，精彩继续",
                 });
             }
@@ -122,7 +123,7 @@ class Day2 extends React.Component {
             <View style={styles.container}>
                 <Image source={this.state.iconBG}
                        style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}>
-                    <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}>
+                    <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center',}}>
                         <Image source={this.state.iconBG} style={{height: 100, width: 100,}}/>
 
                         <TouchableOpacity onPress={()=>this._onPress()}>
@@ -142,7 +143,7 @@ class Day2 extends React.Component {
                                 点我开始倒计时{this.state.timeLeft}秒
                             </Text>
                         </TouchableOpacity>
-                        <Text>{this.state.value}</Text>
+                        <Text style={styles.instructions}>{this.state.value}</Text>
                     </View>
                 </Image>
             </View>
@@ -158,10 +159,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     instructions: {
-        fontSize: 16,
+        fontSize: 30,
         textAlign: 'center',
         margin: 15,
-        color: 'red',
+        color: 'white',
     },
 });
 
