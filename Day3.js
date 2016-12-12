@@ -13,11 +13,12 @@ import {
     Image,
     AppRegistry,
     ToastAndroid,
+    BackAndroid,
 } from 'react-native';
 
 const PROFILE_WIDTH = 90;
 
-class Day3 extends React.Component {
+export default class Day3 extends React.Component {
 
     static route = {
         navigationBar: {
@@ -31,6 +32,23 @@ class Day3 extends React.Component {
             scrollY: new Animated.Value(0),
         }
     }
+
+    componentWillMount() {
+        BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+    componentWillUnmount() {
+        BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+    onBackAndroid = ()=> {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.pop();
+            return true;
+        }
+        return false;
+    };
 
     _blockJS = (i) => {
         ToastAndroid.show("hi " + i, ToastAndroid.SHORT);

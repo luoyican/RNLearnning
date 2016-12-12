@@ -17,24 +17,7 @@ import {
 
 import Day1MusicList from './Day1MusicList';
 
-export default class Day1 extends Component {
-    render() {
-        let defaultName = 'Day1MusicTitle';
-        let defaultComponent = Day1MusicTitle;
-        return (
-            <Navigator
-                initialRoute={{name: defaultName, component: defaultComponent}}
-                configureScene={(route) => Navigator.SceneConfigs.HorizontalSwipeJump
-                }
-                renderScene={(route, navigator) => {
-                    let Component = route.component;
-                    return <Component {...route.params} navigator={navigator}/>
-                }}/>
-        );
-    }
-}
-
-export class Day1MusicTitle extends Component {
+export default class Day1MusicTitle extends Component {
     constructor(props) {
         super(props);
         console.disableYellowBox = true;
@@ -44,6 +27,24 @@ export class Day1MusicTitle extends Component {
             album: ['37880978', '58451795', '33234785', '378807758', '12434535'],
         };
     }
+
+    //android返回键处理
+    componentWillMount() {
+        BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+    componentWillUnmount() {
+        BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+    onBackAndroid = ()=> {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.pop();
+            return true;
+        }
+        return false;
+    };
 
     onPressButton(index) {
         const {navigator} = this.props;
@@ -96,4 +97,4 @@ export class Day1MusicTitle extends Component {
     }
 }
 
-AppRegistry.registerComponent('RN30Days', ()=>Day1);
+AppRegistry.registerComponent('RN30Days', ()=>Day1MusicTitle);

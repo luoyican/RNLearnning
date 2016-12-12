@@ -10,9 +10,10 @@ import {
     TouchableOpacity,
     AppRegistry,
     Image,
+    BackAndroid,
 } from 'react-native';
 
-class Day2 extends React.Component {
+export default class Day2 extends React.Component {
     constructor(props) {
         super(props);
         console.disableYellowBox = true;
@@ -26,13 +27,22 @@ class Day2 extends React.Component {
 
     }
 
-    componentDidMount() {
-
+    componentWillMount() {
+        BackAndroid.addEventListener('hardwareBackPress', this.onBackAndroid);
     }
 
     componentWillUnmount() {
-
+        BackAndroid.removeEventListener('hardwareBackPress', this.onBackAndroid);
     }
+
+    onBackAndroid = ()=> {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.pop();
+            return true;
+        }
+        return false;
+    };
 
     changeBG() {
         let i = this.state.pressTime % 8;

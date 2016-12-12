@@ -14,6 +14,16 @@ import {
 } from 'react-native';
 
 export default class MusicTab extends Component {
+
+    static propTypes = {
+        backgroundColor:'#444444',
+        uri:React.PropTypes.string.isRequired,
+        name:React.PropTypes.string.isRequired,
+        author:React.PropTypes.string.isRequired,
+    };
+    constructor(props){
+        super(props);
+    }
     render() {
         return (
             <View>
