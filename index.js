@@ -17,8 +17,10 @@ class chooseDaysNavigator extends Component {
         return (
             <Navigator
                 initialRoute={{name: defaultName, component: defaultComponent}}
-                configureScene={(route) => Navigator.SceneConfigs.HorizontalSwipeJump
-                }
+                configureScene={(route) => ({
+                    ...Navigator.SceneConfigs.HorizontalSwipeJump,
+                    gestures: {pop: false}//禁止左右滑动
+                })}
                 renderScene={(route, navigator) => {
                     let Component = route.component;
                     return <Component {...route.params} navigator={navigator}/>

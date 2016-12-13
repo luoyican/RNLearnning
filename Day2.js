@@ -176,4 +176,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('RN30Days', ()=>Day2);
+// AppRegistry.registerComponent('RN30Days', ()=>Day2);
