@@ -15,6 +15,7 @@ import Day1MusicTitle from './Day1';
 import Day2 from './Day2';
 import Day3 from './Day3';
 import Day4 from './Day4';
+import Day5 from './Day5';
 
 export default class chooseDays extends Component {
 constructor(props){
@@ -64,6 +65,17 @@ constructor(props){
         }
     };
 
+    _Day5 = () => {
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.push({
+                name: '未知数',
+                component: Day5,
+                params: {}
+            })
+        }
+    };
+
     render() {
         return (
             <View style={{flex:1,}}>
@@ -82,6 +94,9 @@ constructor(props){
                         </TouchableOpacity>
                     <TouchableOpacity style={[styles.itemTouch,{backgroundColor:'#d7bfce'}]} onPress={this._Day4}>
                         <Text style={styles.itemText}>Day 4</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.itemTouch,{backgroundColor:'#9c9993'}]} onPress={this._Day5}>
+                        <Text style={styles.itemText}>Day 5</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
